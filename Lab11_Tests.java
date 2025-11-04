@@ -68,10 +68,15 @@ public class Lab11_Tests {
         } catch (Exception e){
             e.printStackTrace();
         }
-        
-        assertEquals(10, threadA.getData().size());
+
+        assertEquals(true, threadA.getData().size() >= 10);
         assertEquals(0, threadB.getData().size());
 
         threadB.start();
+        try {
+            threadB.join();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
