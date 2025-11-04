@@ -18,6 +18,12 @@ public class Lab11_Tests {
         threadA.start();
         threadB.start();
 
+        threadA.join();
+        threadB.join();
+
+        ArrayList<String> data = threadA.getData();
+        assertEquals(200, data.size());
+
     }
 
     /*
