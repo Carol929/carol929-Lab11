@@ -17,9 +17,13 @@ public class Lab11_Tests {
 
         threadA.start();
         threadB.start();
-
-        threadA.join();
-        threadB.join();
+        
+        try {
+            threadA.join();
+            threadB.join();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         ArrayList<String> data = threadA.getData();
         assertEquals(200, data.size());
