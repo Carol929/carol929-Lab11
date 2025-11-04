@@ -46,12 +46,13 @@ public class Lab11_Tests {
         } catch (Exception e){
             e.printStackTrace();
         }
-        
+
         try {
             threadA.join();
             threadB.join();
         } catch (Exception e){
             e.printStackTrace();
+        }
 
         ArrayList<String> data = threadA.getData();
         assertEquals(true, data.size() >= 10);
@@ -68,7 +69,6 @@ public class Lab11_Tests {
         Lab11_Thread threadB = new Lab11_Thread("B3", 10);
 
         threadA.getData().clear(); 
-        threadB.getData().clear();
 
         threadA.start();
         
@@ -78,8 +78,12 @@ public class Lab11_Tests {
             e.printStackTrace();
         }
 
-        assertEquals(true, threadA.getData().size() >= 10);
-        assertEquals(0, threadB.getData().size());
+        assertEquals(10, threadA.getData().size());
+
+        for (int i = 0; i < threadA.getData().size(); i++) {
+            String s = threadA.getData().get(i);
+            assertEquals(true, s.startsWith("A3 "));
+        }
 
         threadB.start();
         try {
