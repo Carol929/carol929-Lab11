@@ -46,7 +46,7 @@ public class Lab11_Tests {
         } catch (Exception e){
             e.printStackTrace();
         }
-        
+
         ArrayList<String> data = threadA.getData();
         assertEquals(true, data.size() >= 10);
 
@@ -69,6 +69,9 @@ public class Lab11_Tests {
             e.printStackTrace();
         }
         
+        assertEquals(10, threadA.getData().size());
+        assertEquals(0, threadB.getData().size());
+
         threadB.start();
     }
 }
